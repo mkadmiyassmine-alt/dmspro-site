@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DMSPRO | Société de Nettoyage Professionnelle</title>
+<style>
+/* ------------------------- GLOBAL ------------------------- */
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins", sans-serif; }
+body { background-color: #f5f7fa; color: #012758; }
+a { text-decoration: none; color: inherit; }
+
+/* ------------------------- NAVBAR ------------------------- */
+nav {
+  width: 100%; background: #012758; color:white;
+  position: fixed; top:0; left:0; z-index:100;
+  display:flex; justify-content: space-between; align-items:center;
+  padding:10px 60px; box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+nav .logo img {
+  height:70px; width:auto; display:block;
+  transition: transform 0.7s ease;
+}
+nav .logo img:hover {
+  transform: scale(3.05);
+}
+nav ul { display:flex; gap:25px; list-style:none; }
+nav ul li a { color:white; font-weight:500; transition:0.3s; }
+nav ul li a:hover { color:#00aaff; }
+
+/* ------------------------- HERO ------------------------- */
+.hero {
+  height:100vh;
+  background: linear-gradient(rgba(1,39,88,0.6), rgba(1,39,88,0.6)),
+    url('"D:\Nouveau dossier\image\WhatsApp Image 2025-11-08 à 18.12.03_3d9b3f57.jpg"') center/cover no-repeat;
+  display:flex; justify-content:center; align-items:center; text-align:center; color:white; padding-top:60px;
+}
+.hero h1 { font-size:3rem; margin-bottom:15px; text-shadow:2px 2px 8px rgba(0,0,0,0.4);}
+.hero p { font-size:1.3rem; margin-bottom:30px; text-shadow:1px 1px 6px rgba(0,0,0,0.3);}
+.hero button {
+  background:#00aaff; color:white; border:none; padding:15px 35px;
+  font-size:1rem; border-radius:50px; cursor:pointer; transition:0.3s; box-shadow:0 5px 15px rgba(0,170,255,0.4);
+  animation:pulse 2s infinite;
+}
+.hero button:hover { transform:translateY(-5px); background:#0077b6; box-shadow:0 8px 20px rgba(0,119,182,0.5); }
+@keyframes pulse {
+  0% { box-shadow:0 5px 15px rgba(0,170,255,0.4); transform:scale(1);}
+  50% { box-shadow:0 8px 25px rgba(0,170,255,0.6); transform:scale(1.05);}
+  100% { box-shadow:0 5px 15px rgba(0,170,255,0.4); transform:scale(1);}
+}
+
+/* ------------------------- SERVICES ------------------------- */
+section.services { padding:100px 60px; text-align:center; background:#ffffff; }
+.services h2 { font-size:2.2rem; color:#012758; margin-bottom:50px; }
+.service-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:30px; }
+.service-card {
+  background:#e6f0ff; padding:30px; border-radius:15px;
+  transition:0.5s; box-shadow:0 8px 20px rgba(0,0,0,0.1);
+  position:relative; overflow:hidden; cursor:pointer;
+}
+.service-card img { 
+  width:100%; height:180px; object-fit:cover; border-radius:10px; 
+  transition:0.5s;
+}
+.service-card:hover {
+  transform:translateY(-10px) scale(1.05);
+  box-shadow:0 15px 30px rgba(0,0,0,0.25);
+  border:3px solid #00aaff;
+}
+.service-card:hover img {
+  transform:scale(1.1) rotate(2deg);
+}
+.service-card .bubble {
+  position:absolute; border-radius:50%; opacity:0.7;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.service-card:hover .bubble {
+  transform: translateY(-30px) rotate(20deg) scale(1.3);
+  opacity:1;
+}
+
+/* ------------------------- À PROPOS ------------------------- */
+section.apropos { background:#f5f7fa; padding:100px 60px; display:flex; flex-wrap:wrap; align-items:center; gap:40px;}
+.apropos img { width:400px; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.2);}
+.apropos div { flex:1; }
+.apropos h2 { font-size:2rem; color:#012758; margin-bottom:20px;}
+.apropos p { line-height:1.8; margin-bottom:15px;}
+
+/* ------------------------- CONTACT ------------------------- */
+section.contact { padding:100px 60px; text-align:center; background:#ffffff; }
+.contact h2 { font-size:2rem; color:#012758; margin-bottom:50px; }
+form { max-width:600px; margin:auto; display:flex; flex-direction:column; gap:15px;}
+input, textarea { padding:15px; border:1px solid #012758; border-radius:10px; font-size:1rem; transition:0.3s; }
+input:focus, textarea:focus { outline:none; border-color:#00aaff; box-shadow:0 0 8px rgba(0,170,255,0.3);}
+button.submit-btn { background:#012758; color:white; border:none; padding:15px; border-radius:50px; cursor:pointer; font-size:1rem; transition:0.3s;}
+button.submit-btn:hover { background:#00aaff; transform:translateY(-3px); box-shadow:0 8px 20px rgba(0,170,255,0.4);}
+
+/* ------------------------- FOOTER ------------------------- */
+footer { background:#012758; color:white; text-align:center; padding:40px 20px;}
+footer p { font-size:0.9rem;}
+
+/* ------------------------- RESPONSIVE ------------------------- */
+@media(max-width:768px){
+  nav{flex-direction:column;}
+  nav ul{flex-wrap:wrap; justify-content:center;}
+  .apropos{flex-direction:column; text-align:center;}
+  .apropos img{width:100%;}
+}
+
+/* ------------------- ANIMATIONS ------------------- */
+.fade-in { opacity:0; transform:translateY(20px); transition:all 1s ease-out;}
+.fade-in.show { opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="logo">
+    <a href="#home"><img src="C:\Users\User\OneDrive\Bureau\dmspro-site\image\DMSPRO (2).png" alt="Logo DMSPRO"></a>
+  </div>
+  <ul>
+    <li><a href="#home">Accueil</a></li>
+    <li><a href="#services">Nos Services</a></li>
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <h1>Bienvenue chez DMSPRO</h1>
+    <p>Votre partenaire de confiance pour un environnement propre et sain.</p>
+    <button onclick="scrollToSection('services')">Découvrir nos services</button>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services fade-in" id="services">
+  <h2>Nos Services</h2>
+  <div class="service-grid">
+    <div class="service-card" id="service1">
+      <img src="C:\Users\User\OneDrive\Bureau\dmspro-site\image\WhatsApp Image 2025-11-08 à 18.12.03_3d9b3f57.jpg" alt="Nettoyage de machines industrielles lourdes">
+      <h3>Nettoyage de machines industrielles lourdes</h3>
+     
+    
+    </div>
+    <div class="service-card" id="service2">
+      <img src="C:\Users\User\OneDrive\Bureau\dmspro-site\image\WhatsApp Image 2025-11-08 à 18.12.04_0da041f8.jpg" alt="Degraissage des moteurs et equipements mecaniques">
+      <h3>Degraissage des moteurs et equipements mecaniques</h3>
+     
+    </div>
+    <div class="service-card" id="service3">
+      <img src="C:\Users\User\OneDrive\Bureau\dmspro-site\image\WhatsApp Image 2025-11-08 à 18.12.04_1e5c41b2.jpg" alt="Nettoyage haute pression et vapeur">
+      <h3>Nettoyage haute pression et vapeur</h3>
+    
+    </div>
+    <div class="service-card" id="service4">
+      <img src="C:\Users\User\OneDrive\Bureau\dmspro-site\image\WhatsApp Image 2025-11-08 à 18.12.04_224d965d.jpg" alt="Nettoyage apres maintenance ou reparation">
+      <h3>Nettoyage apres maintenance ou reparation</h3>
+     
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section class="apropos fade-in" id="apropos">
+  <img src="https://plus.unsplash.com/premium_photo-1663090722153-120cf71c908d?fm=jpg&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW5kdXN0cmlhbCUyMGNsZWFuaW5nfGVufDB8fDB8fHww&ixlib=rb-4.1.0&q=60&w=3000" alt="À propos DMSPRO">
+  <div>
+    <h2>À propos de DMSPRO</h2>
+    <p>DMSPRO est une entreprise de nettoyage basée à <b>1 rue Auguste Renoir, Rillieux-la-Pape</b>. 
+    Nous mettons notre savoir-faire au service des particuliers et des professionnels, avec un engagement fort pour la qualité et la satisfaction client.</p>
+    <p>Notre équipe expérimentée utilise des produits respectueux de l’environnement et des techniques modernes pour garantir un résultat impeccable à chaque intervention.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact fade-in" id="contact">
+  <h2>Contactez-nous</h2>
+  <form id="contactForm">
+    <input type="text" placeholder="Nom complet *" required>
+    <input type="email" placeholder="Adresse e-mail *" required>
+    <input type="text" placeholder="Sujet">
+    <textarea placeholder="Votre message *" rows="5" required></textarea>
+    <button class="submit-btn" type="submit">Envoyer</button>
+  </form>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>📍 DMSPRO – 1 rue Auguste Renoir, Rillieux-la-Pape<br>
+  ✉️ Dmspro1812@gmail.com | ☎️  06 60 18 05 38</p>
+  <br>
+  <p>© 2025 DMSPRO. Tous droits réservés.</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+function scrollToSection(id) { document.getElementById(id).scrollIntoView({ behavior:'smooth' }); }
+document.getElementById('contactForm').addEventListener('submit', function(e){ e.preventDefault(); alert("Merci pour votre message ! Nous vous répondrons dans les plus brefs délais."); this.reset(); });
+
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = { threshold:0.2, rootMargin:"0px 0px -50px 0px" };
+const appearOnScroll = new IntersectionObserver(function(entries,observer){
+  entries.forEach(entry=>{ if(!entry.isIntersecting) return; entry.target.classList.add('show'); observer.unobserve(entry.target); });
+}, appearOptions);
+faders.forEach(fader => appearOnScroll.observe(fader));
+
+function createBubbles(serviceId) {
+  const card = document.getElementById(serviceId);
+  for(let i=0;i<8;i++){
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+    bubble.style.left = Math.random()*90 + '%';
+    bubble.style.width = bubble.style.height = (5 + Math.random()*15) + 'px';
+    bubble.style.background = ['#00aaff','#ffbb00','#00ff99','#ff0055'][Math.floor(Math.random()*4)];
+    bubble.style.animationDuration = (2 + Math.random()*3) + 's';
+    bubble.style.animationDelay = Math.random()*2 + 's';
+    card.appendChild(bubble);
+  }
+}
+['service1','service2','service3','service4'].forEach(createBubbles);
+</script>
+
+</body>
+</html>
